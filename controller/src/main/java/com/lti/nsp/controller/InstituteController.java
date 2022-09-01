@@ -46,8 +46,6 @@ public class InstituteController {
 	@PostMapping("/institutes")
 	public InstituteDetail addInstitute(@Valid@RequestBody InstituteDetail application)
 	{
-		System.out.println("Academic Details work!");
-		
 		instituteImpl.addInstitute(application);
 		return application;
 	}
@@ -92,26 +90,23 @@ public class InstituteController {
 		return scholar;
 	}
 	
-//	@PutMapping("/instiApproval/{instiCode}")
-//	public String updateStatus(@PathVariable(value="instiCode") String instiCode) {
-		//Optional<InstituteDetail> i = institute.findByInstiCode(instiCode);
-		//InstituteDetail application = i.get(); 
-//		List<ScholarshipApplication> scholar = sar.findByInstiCode(instiCode);
-//		studentreg reg = null;
-//		for(ScholarshipApplication sa : scholar)
-//		{
-///			String aadharNoo  = sa.getAadhar();
-//			reg =  studentRepo.findByAadharNumber(aadharNoo);
-//			reg.setApplicationstatus("Approved by Institute");
-//			studentRepo.save(reg);
-			
-//		}
-///		return reg.getApplicationstatus();
-		
-//		application.setApplication_status("approved by nodal officer");
-//		institute.save(application); 
-		
-	//}
+	@PutMapping("/instiApproval/{instiCode}")
+	public String updateStatus(@PathVariable(value="instiCode") String instiCode) {
+		Optional<InstituteDetail> i = institute.findByInstiCode(instiCode);
+		InstituteDetail application = i.get(); 
+		List<ScholarshipApplication> scholar = sar.findByInstiCode(instiCode);
+		studentreg reg = null;
+		for(ScholarshipApplication sa : scholar)
+		{
+		String aadharNoo  = sa.getAadhar();
+			reg =  studentRepo.findByAadharNumber(aadharNoo);
+		reg.setApplicationstatus("Approved by Institute");
+			studentRepo.save(reg);
+		}
+		application.setApplication_status("approved by nodal officer");
+		institute.save(application); 
+		return reg.getApplicationstatus();
+}
 	
 	
 	

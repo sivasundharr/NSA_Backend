@@ -61,19 +61,6 @@ public class StudentController {
 		return ls;
 	}
 	
-	//@PostMapping("/studentlogin")
-	//public boolean loginCheck(@RequestBody String aadharNumber, @RequestBody String password) {
-		//studentreg s = service.findStudent(aadharNumber);
-		//if(s == null) {
-		//	return false;
-		//}
-		//String aadhar1 = aadharNumber;
-		//String password1 = password;
-		//if(aadhar1.equals(s.getAadharNumber()) && password1.equals(s.getPassword())) {
-		//	return true;
-		//}
-		//return false;
-	//}
 	
 	
 	
